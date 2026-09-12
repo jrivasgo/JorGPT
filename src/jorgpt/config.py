@@ -1,9 +1,9 @@
-from dataClasses import dataclass
+from dataclasses import dataclass
 from pathlib import Path
 
 import yaml
 
-@dataclass
+@dataclass(frozen=True)
 class JorGPTConfig:
   """Configuramos la arquitectura de nuestro modelo, JorGPT."""
 
@@ -26,7 +26,7 @@ class JorGPTConfig:
   tie_word_embeddings: bool
 
   attention_bias: bool
-  mip_bias: bool
+  mlp_bias: bool
   lm_head_bias: bool
 
   dropout: float
@@ -36,7 +36,7 @@ class JorGPTConfig:
   use_rope: bool
   use_swiglu: bool
 
-def __post_init__(self) -> None:
+  def __post_init__(self) -> None:
   """Comprueba que tenga sentido"""
 
    if self.vocab_size <=0:
@@ -45,52 +45,52 @@ def __post_init__(self) -> None:
    if self.vocab_size >= 65536:
             raise ValueError("vocab_size debe ser menor que 65536 para usar uint16.")
 
-    if self.hidden_size <= 0:
+   if self.hidden_size <= 0:
             raise ValueError("hidden_size debe ser mayor que 0.")
 
-    if self.num_hidden_layers <= 0:
+   if self.num_hidden_layers <= 0:
             raise ValueError("num_hidden_layers debe ser mayor que 0.")
 
-    if self.num_attention_heads <= 0:
+   if self.num_attention_heads <= 0:
             raise ValueError("num_attention_heads debe ser mayor que 0.")
 
-    if self.num_key_value_heads <= 0:
+   if self.num_key_value_heads <= 0:
             raise ValueError("num_key_value_heads debe ser mayor que 0.")
 
-    if self.head_dim <= 0:
+   if self.head_dim <= 0:
             raise ValueError("head_dim debe ser mayor que 0.")
 
-    if self.hidden_size != self.num_attention_heads * self.head_dim:
+   if self.hidden_size != self.num_attention_heads * self.head_dim:
             raise ValueError("hidden_size debe ser igual a num_attention_heads * head_dim.")
       
-    if self.num_attention_heads % self.num_key_value_heads != 0:
+   if self.num_attention_heads % self.num_key_value_heads != 0:
             raise ValueError("num_attention_heads debe ser divisible entre num_key_value_heads.")
 
-      if self.intermediate_size <= 0:
+   if self.intermediate_size <= 0:
             raise ValueError("intermediate_size debe ser mayor que 0.")
 
-      if self.max_seq_len <= 0:
+   if self.max_seq_len <= 0:
             raise ValueError("max_seq_len debe ser mayor que 0.")
 
-      if self.rope_theta <= 0:
+   if self.rope_theta <= 0:
             raise ValueError("rope_theta debe ser mayor que 0.")
 
-      if self.rms_norm_eps <= 0:
+   if self.rms_norm_eps <= 0:
             raise ValueError("rms_norm_eps debe ser mayor que 0.")
 
-      if not 0.0 <= self.dropout < 1.0:
+   if not 0.0 <= self.dropout < 1.0:
             raise ValueError("dropout debe estar entre 0.0 y 1.0.")
 
-      if self.initializer_range <= 0:
+   if self.initializer_range <= 0:
             raise ValueError("initializer_range debe ser mayor que 0.")
-        @property
-    def queries_per_kv_head(self) -> int:
+  @property
+  def queries_per_kv_head(self) -> int:
         """Número de cabezas Query que comparten cada cabeza Key/Value."""
 
         return self.num_attention_heads // self.num_key_value_heads
 
-    @classmethod
-    def from_yaml(cls, path: str | Path) -> "JorGPTConfig":
+  @classmethod
+  def from_yaml(cls, path: str | Path) -> "JorGPTConfig":
         """Carga una configuración de JorGPT desde un archivo YAML."""
 
         path = Path(path)
