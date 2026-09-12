@@ -1,5 +1,5 @@
 model: 
- name "JorGPT_138M"
+ name: "JorGPT_138M"
  vocab_size: 16000
  hidden_size: 768
  num_hidden_layers: 20
@@ -12,13 +12,13 @@ model:
 
  max_seq_len: 2048
 
- rope_thetta: 10000.0
+ rope_theta: 10000.0
  rms_norm_eps: 1.0e-5
 
- tie_word_emmbedings: true
+ tie_word_embedings: true
 
  attention_bias: false
- mpl_bias: false
+ mlp_bias: false
  lm_head_bias: false
 
  dropout: 0.00
