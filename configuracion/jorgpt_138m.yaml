@@ -15,7 +15,7 @@ model:
  rope_theta: 10000.0
  rms_norm_eps: 1.0e-5
 
- tie_word_embedings: true
+ tie_word_embeddings: true
 
  attention_bias: false
  mlp_bias: false
