@@ -1,0 +1,30 @@
+model: 
+ name "JorGPT_138M"
+ vocab_size: 16000
+ hidden_size: 768
+ num_hidden_layers: 20
+
+ num_attention_heads: 12
+ num_key_value_heads: 4
+ head_dim: 64
+
+ intermediate_size: 2048
+
+ max_seq_len: 2048
+
+ rope_thetta: 10000.0
+ rms_norm_eps: 1.0e-5
+
+ tie_word_emmbedings: true
+
+ attention_bias: false
+ mpl_bias: false
+ lm_head_bias: false
+
+ dropout: 0.00
+
+ initializer_range: 0.02
+
+ use_gqa: true
+ use_rope: true
+ use_swiglu: true
