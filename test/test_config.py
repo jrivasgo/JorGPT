@@ -9,7 +9,7 @@ ROOT = Path(__file__).resolve().parents[1]
 CONFIG_PATH = ROOT / "configuracion" / "jorgpt_138m.yaml"
 
 def test_load_jorgpt_config():
-    config = JorGPTConfig.form_yaml(CONFIG_PATH)
+    config = JorGPTConfig.from_yaml(CONFIG_PATH)
 
     assert config.name == "JorGPT_138M"
     assert config.vocab_size == 16000
