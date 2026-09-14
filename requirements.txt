@@ -2,3 +2,5 @@ torch
 numpy
 PyYAML
 pytest
+tokenizers
+datasets
