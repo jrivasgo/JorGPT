@@ -9,7 +9,7 @@ description = "Small Spanish language model built and trained from scratch with 
 readme = "README.md"
 requires-python = ">=3.11"
 
-dependencies = ["torch","numpy","PyYAML",]
+dependencies = ["torch","numpy","PyYAML","tokenizers", "datasets",]
 
 [project.optional-dependencies]
 dev = ["pytest",]
