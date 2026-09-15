@@ -2,7 +2,7 @@ import hashlib
 import json
 from pathlib import Path
 
-from jorgpt.fineweb2_hq import {DATASET_CONFIG,DATASET_NAME,DATASET_REVISION,DATASET_SPLIT,)
+from jorgpt.fineweb2_hq import (DATASET_CONFIG,DATASET_NAME,DATASET_REVISION,DATASET_SPLIT,)
 
 from jorgpt.tokenizer_data import (DEFAULT_MIN_CHARS,DEFAULT_SEED,DEFAULT_SHUFFLE_BUFFER,iter_tokenizer_texts,)
 
