@@ -1,8 +1,8 @@
-from dataset import IterableDataset, load_dataset
+from datasets import IterableDataset, load_dataset
 
-  DATASET_NAME = "epfml/FineWeb2_HQ"
-  DATASET_CONFIG = "spa_Latn"
-  DATASET_SPLIT = "train"
+DATASET_NAME = "epfml/FineWeb2-HQ"
+DATASET_CONFIG = "spa_Latn"
+DATASET_SPLIT = "train"
 
 def load_fineweb2_hq_spanish() -> IterableDataset:
     """Carga FineWeb2-HQ en español mediante streaming."""
